@@ -7,8 +7,26 @@ The Project aims to demonstrate some of the more rare exploits in Web Applicatio
 * Server-Side Template Injection
 * JSON SWF Cross-site request forgery
 * NoSQL Injection
-* Node Deserialization Attak
+* Node Deserialization Attack
 
 ## Requirements:
 * Nodejs Framework
 * MongoDB
+### For Fresh Kali Deployment:
+
+Follow the below instructions
+
+```
+wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+sudo apt-get update
+sudo apt-get install -y nodejs
+sudo apt-get install -y npm
+sudo apt-get install -y mongodb-org
+chown -R mongodb:mongodb /var/lib/mongodb
+chown mongodb:mongodb /tmp/mongodb-27017.sock
+sudo service mongod start
+git clone https://github.com/wisahmed/VulnTestlab.git
+cd VulnTestlab
+npm start
+```
