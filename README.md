@@ -12,9 +12,8 @@ The Project aims to demonstrate some of the more rare exploits in Web Applicatio
 ## Requirements:
 * Nodejs Framework
 * MongoDB
-### For Fresh Kali Deployment:
 
-Follow the below instructions
+### For Fresh install on Kali-Machines (Instructions may differ on other Linux Distros) :
 
 ```
 wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
