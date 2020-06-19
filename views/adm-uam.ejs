@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+<header>
+    <% include ./header %>
+</header>
+
+<main>
+    <div>
+    	<div>
+			<% include ./sidebar %>
+		</div>
+        <div class="jumbotron" style="margin-left: 250px;">
+
+        	<h1>User Management:</h1>
+        	<p>Pick and choose your club.</p>
+            <% for(var i=0; i< Object.keys(item).length; i++){ %>
+            <div style="margin:5px; border: 5px; background-color: lightgray; padding: 15px; border-radius: 10px">
+                <div>
+                    <div class="container">
+                        <div class="modal fade" id="myModal_<%= item[i]._id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_<%= item[i]._id %>" aria-hidden="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div id="res"></div>
+                                        <form id="test" action="/admin/uam-cp" method="POST">
+                                            <input type="hidden" name="item_id" id="item_id" value="<%= item[i]._id %>"/>
+                                            <label>New Password:</Label>
+                                            <input type="password" name="newpass" id="newpass" value=""/><br><br>
+                                            <label>Confirm New Password:</Label>
+                                            <input type="password" name="cnwpass" id="cnwpass" value=""/><br><br>
+                                            <input type="submit" value="send"/>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p><b><%= item[i].name %></b></p><button style="border-radius: 5px; margin: 3px; background-color: #4CAF50; color: white;" onclick="location.href='/admin/uam-allow/<%= item[i]._id %>'">Allow User Access</button><button style="border-radius: 5px; margin: 3px;background-color: red; color: white;" onclick="location.href='/admin/uam-revoke/<%= item[i]._id %>'">Revoke User Access</button><button style="border-radius: 5px; margin: 3px;background-color: yellow; color: black;" href="#aboutModal" data-toggle="modal" data-target="#myModal_<%= item[i]._id %>">Change Password</button>
+                </div>
+            </div>
+            <% }%>
+    	</div>
+    </div>
+</main>
+
+<footer>
+	<% include ./footer %>
+</footer>
+</body>

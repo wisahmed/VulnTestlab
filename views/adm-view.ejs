@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+<header>
+    <% include ./header %>
+</header>
+
+<main>
+    <div>
+    	<div>
+			<% include ./sidebar %>
+		</div>
+        <div class="jumbotron" style="margin-left: 250px;">
+
+        	<h1><%= item[0].title %></h1>
+        	<p><%= item[0].text %></p>
+        </div>
+    </div>
+</main>
+
+<footer>
+	<% include ./footer %>
+</footer>
+</body>
+

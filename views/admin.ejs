@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+
+<header>
+    <% include ./header %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <h1>The review page:<%= name %></h1>
+        <p>Nothing to test here really</p>
+	    <div>
+	    	<form action="/admin" method="POST">
+                <input type="password" name="pass" value="" class="form-control" style="width: 400px;background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;"/>
+                <br>
+                <input type="submit" value="send" class="btn btn-primary"/>      
+            </form>
+	    </div>
+	</div>
+
+</main>
+
+<footer>
+    <% include ./footer %>
+</footer>
+
+</body>
+</html>

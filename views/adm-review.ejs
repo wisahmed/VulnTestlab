@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+<header>
+    <% include ./header %>
+</header>
+
+<main>
+    <div>
+    	<div>
+			<% include ./sidebar %>
+		</div>
+        <div class="jumbotron" style="margin-left: 250px;">
+
+        	<h1>Blog Review:</h1>
+        	<p>Screen the content for unneccessary stuff.</p>
+            <% for(var i=0; i< Object.keys(item).length; i++){ %>
+            <div style="margin:5px; border: 5px; background-color: lightgray; padding: 15px; border-radius: 10px">
+                <p><b><%= item[i].title %></b></p>
+                <div>
+                    <button style="border-radius: 5px; margin: 3px;" onclick="location.href='/admin/accept/<%= item[i]._id %>'">Accept</button><button style="border-radius: 5px; margin: 3px;" onclick="location.href='/admin/view/<%= item[i]._id %>'"> View </button><button style="border-radius: 5px; margin: 3px;" onclick="location.href='/admin/reject/<%= item[i]._id %>'">Reject</button>
+                </div>
+            </div>
+            <% }%>
+    	</div>
+    </div>
+</main>
+
+<footer>
+	<% include ./footer %>
+</footer>
+</body>
+

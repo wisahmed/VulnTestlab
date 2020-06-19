@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+</head>
+<body class="container">
+<header>
+    <% include ./header %>
+</header>
+<script>
+(function() {
+    function toJSONString( form ) {
+        var obj = {};
+        var elements = form.querySelectorAll( "input, select, textarea" );
+        for( var i = 0; i < elements.length; ++i ) {
+            var element = elements[i];
+            var name = element.name;
+            var value = element.value;
+
+            if( name ) {
+                obj[ name ] = value;
+            }
+        }
+
+        return JSON.stringify( obj );
+    }
+
+    document.addEventListener( "DOMContentLoaded", function() {
+        var form = document.getElementById( "test" );
+        form.addEventListener( "submit", function( e ) {
+            e.preventDefault();
+            var json = toJSONString( this );
+            
+            var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("res").innerHTML =
+                        this.responseText;
+                   }
+                };
+                xhttp.open("POST", "page4", true);
+                xhttp.setRequestHeader('Content-Type','application/json')
+                xhttp.send(json);
+
+        }, false);
+
+    });
+
+})();
+</script>
+<div class="container">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div id="res"></div>
+                    <form id="test">
+                        <input type="text" name="headline" id="headline" value=""/><br><br>
+                        <input type="text" name="about" id="about" value=""/><br><br>
+                        <input type="text" name="hobbies" id="hobbies" value=""/><br><br>
+                        <input type="submit" value="send"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<a href="#aboutModal" data-toggle="modal" data-target="#myModal">Edit</a>
+
+</div>
+
+<footer>
+	<% include ./footer %>
+</footer>
+</body>
